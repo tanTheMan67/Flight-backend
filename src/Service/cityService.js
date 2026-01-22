@@ -17,11 +17,12 @@ class CityService{
 
       }
     }
-    async getAllCity(){
+    async getAllCity(filter){
+      console.log({filter});
     try{
-     return await this.cityRepository.getAllCity();
+     return await this.cityRepository.getAllCity(filter);
     }catch(err){
-
+      throw new Error(err);
     }
     }
     async updateCity(cityId,Data){

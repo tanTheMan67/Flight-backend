@@ -17,9 +17,11 @@ const deleted = async(req,res)=>{
     }
 }
 const get=async(req,res)=>{
+    console.log(req);
     try{
-      const getAll= await cityService.getAllCity();
-      return res.status(200).send(getAll);
+        console.log(req.query);
+      const getAll= await cityService.getAllCity(req.query);
+      return res.status(200).json({"results":getAll});
     }catch(err){
      console.log(err);
     }

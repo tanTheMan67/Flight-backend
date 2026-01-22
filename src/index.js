@@ -9,7 +9,7 @@ const setupAndStartServer=async()=>{
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({}));
-app.use('/api',ApiRoutes);
+app.use('/api',ApiRoutes);  
  app.listen(process.env.PORT,async()=>{
     console.log(`app is listening on port ${process.env.PORT}`);
     
