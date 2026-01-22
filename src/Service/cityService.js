@@ -31,5 +31,12 @@ class CityService{
 
       }
     }
+    async getCity(cityId){
+      try{
+         return  await this.cityRepository.getCity(cityId);
+      }catch(err){
+
+      }
+    }
 }
 module.exports=CityService;

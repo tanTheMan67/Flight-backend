@@ -11,7 +11,7 @@ const create=async(req,res)=>{
 const deleted = async(req,res)=>{
     try{
      const deleted= await cityService.deleteCity(req.params.id);
-     return res.status(200).send(deleted);
+     return res.status(200).send("city deletion success!!");
     }catch(err){
      console.log(err);
     }
@@ -27,11 +27,22 @@ const get=async(req,res)=>{
 const update=async(req,res)=>{
     try{
        const updatedCity=await cityService.updateCity(req.params.id,req.body);
-       return res.status(200).send(updatedCity);
+       return res.status(200).json({message:"city updated successfully!:",data:updatedCity});
     }catch(err){
-     console.log(err);
+     res.send(err);
     }
 }
-module.exports={
-    create,deleted,update,get
+const getcity= async(req,res)=>{
+ try{
+  const currCity= await cityService.getCity(req.params.cityId);
+  return res.status(200).json({
+    "current city is":currCity
+  });
+ }catch(err){
+    res.send(err);
+ }
+
 }
+module.exports={
+    create,deleted,update,get,getcity
+}   

@@ -12,9 +12,10 @@ class CityRepository{
         try{
              const deletedcity=await City.destroy({
                 where:{
-                    cityId:cityId
+                    id:cityId
                 } 
-             } )
+             } );
+             return deletedcity;
         }catch(err){
             throw new Error(err);
         }
@@ -29,20 +30,29 @@ class CityRepository{
     }
     async updateCity(cityId,data){
         try{
-              const city = await City.findById(cityId);
+              const city = await City.findByPk(cityId);
+              if(!city) throw new Error("no such city found");
               if(city){
                 await city.update({
                 name:data.name
               });
               return city;
             }else{
-                throw new Error("no such city found")
+                throw new Error("no such city found");
             }
              
         }catch(err){
             console.log(err);
         }
 
+    }
+    async getCity(cityId){
+        try{
+        const city= await City.findByPk(cityId);
+        return city;
+        }catch(err){
+            throw new Error(err);
+        }
     }
 }
 module.exports=CityRepository;
