@@ -10,4 +10,5 @@ router.get('/city/:cityId',cityController.getcity);
 console.log(typeof flightController.create);
 console.log( flightController.create);
 router.post('/flights',flightController.create);
+router.get('/flights/getAll',flightController.get);
 module.exports=router;
