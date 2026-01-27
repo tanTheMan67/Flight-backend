@@ -15,9 +15,7 @@ app.use(express.urlencoded({}));
 app.use('/api',ApiRoutes);  
  app.listen(process.env.PORT,async()=>{
     console.log(`app is listening on port ${process.env.PORT}`);
-    if(process.env.SYNC_DB){
-        db.sequelize.sync({alter:true});
-    }
+    
 });
 }
 setupAndStartServer();
