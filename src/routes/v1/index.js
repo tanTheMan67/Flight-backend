@@ -1,6 +1,7 @@
 const express=require('express');
 const cityController=require('../../Controllers/city-controller');
 const flightController=require('../../Controllers/flight-controller');
+const airportController = require('../../Controllers/airport-controller');
 const router=express.Router();
 router.post('/city',cityController.create);
 router.delete('/city/:id',cityController.deleted);
@@ -11,4 +12,9 @@ console.log(typeof flightController.create);
 console.log( flightController.create);
 router.post('/flights',flightController.create);
 router.get('/flights/getAll',flightController.get);
+router.get('/airport/getAll',airportController.getAll);
+router.get('/airport/:id',airportController.get);
+router.post('/airport',airportController.create);
+router.delete('/airport',airportController.destroy);
+router.put('/airport',airportController.update);
 module.exports=router;
